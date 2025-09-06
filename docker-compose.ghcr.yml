@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  backend: # dont change the service name
+    image: ghcr.io/ceviixx/postdock-backend:latest
+    container_name: postdock_api
+    ports:
+      # Port 2525 is required for the internal SMTP server to receive emails.
+      # You may change the external port (left side) if needed.
+      - "2525:2525"
+    volumes:
+      - ./data:/app/data
+
+  frontend:
+    image: ghcr.io/ceviixx/postdock-frontend:latest
+    container_name: postdock_ui
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"

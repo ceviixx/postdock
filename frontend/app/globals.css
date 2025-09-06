@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nav-h: 64px;
+  --sidebar-w: 240px;
+}
+
+@layer utilities {
+  .pt-nav { padding-top: var(--nav-h); }
+  @media (min-width: 1024px) {
+    .pl-sidebar { padding-left: var(--sidebar-w); }
+  }
+}

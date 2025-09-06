@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    container_name: postdock_api
+    ports:
+      - "8080:8080"
+      - "2525:2525"
+    volumes:
+      - ./data:/app/data
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: postdock_ui
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
